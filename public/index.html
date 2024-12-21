@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi-Chat</title>
+    <!-- Mengimpor stylesheet untuk desain tampilan halaman -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Mengimpor Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif; /* Font utama untuk teks */
+            background-color: #f4f6f9; /* Warna latar belakang halaman */
+            color: #333; /* Warna teks */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Memposisikan konten di tengah secara horizontal */
+            align-items: center; /* Memposisikan konten di tengah secara vertikal */
+            min-height: 100vh; /* Tinggi halaman minimal 100% dari tinggi viewport */
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            width: 100%;
+            max-width: 500px; /* Lebar maksimum container chatbot */
+            background: rgba(255, 255, 255, 0.85); /* Latar belakang semi-transparan */
+            border-radius: 15px; /* Sudut yang melengkung */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Bayangan di sekitar container */
+            padding: 30px;
+            text-align: center; /* Menyelaraskan teks ke tengah */
+        }
+
+        /* Header Chatbot */
+        .chatbot-container h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #2196f3; /* Warna biru untuk judul */
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-container h2 i {
+            font-size: 1.5em;
+        }
+
+        /* Chat Window */
+        .chat-window {
+            background: rgba(0, 0, 0, 0.05); /* Latar belakang semi-transparan */
+            border-radius: 15px;
+            height: 350px;
+            overflow-y: auto; /* Memungkinkan scroll pada jendela chat */
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2); /* Bayangan internal untuk chat window */
+        }
+
+        /* Chat Log */
+        .chat-log {
+            display: flex;
+            flex-direction: column; /* Menyusun pesan secara vertikal */
+            gap: 15px;
+        }
+
+        /* User Message */
+        .user-message {
+            align-self: flex-end; /* Pesan pengguna berada di sisi kanan */
+            background: #4caf50; /* Warna latar belakang hijau */
+            color: #fff; /* Warna teks putih */
+            padding: 12px;
+            border-radius: 18px 18px 0 18px; /* Sudut melengkung untuk pesan pengguna */
+            max-width: 75%;
+            word-wrap: break-word;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan di sekitar pesan pengguna */
+        }
+
+        /* Bot Message */
+        .bot-message {
+            align-self: flex-start; /* Pesan bot berada di sisi kiri */
+            background: #2196f3; /* Warna latar belakang biru */
+            color: #fff; /* Warna teks putih */
+            padding: 12px;
+            border-radius: 18px 18px 18px 0; /* Sudut melengkung untuk pesan bot */
+            max-width: 75%;
+            word-wrap: break-word;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan di sekitar pesan bot */
+        }
+
+        /* Input Area */
+        .input-area {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: space-between;
+        }
+
+        /* Input Text */
+        input[type="text"] {
+            flex: 1; /* Agar input mengisi ruang kosong */
+            padding: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #333;
+            font-size: 1.1em;
+            outline: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input[type="text"]:focus {
+            border-color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Send Button */
+        button {
+            padding: 14px 20px;
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: #fb8c00;
+            transform: scale(1.1); /* Efek zoom saat hover */
+        }
+
+        /* Scrollbar Customization */
+        .chat-window::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .chat-window::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .chatbot-container {
+                width: 90%; /* Menyesuaikan lebar container untuk layar kecil */
+            }
+
+            .chat-window {
+                height: 300px;
+            }
+
+            button {
+                font-size: 1em;
+            }
+
+            input[type="text"] {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chatbot-container">
+        <!-- Header Chatbot -->
+        <h2><i class="fas fa-comments"></i> Medi-Chat</h2>
+        
+        <!-- Chat Area -->
+        <div class="chat-window">
+            <!-- Message Log -->
+            <div id="chat-log" class="chat-log"></div>
+            
+            <!-- Input Area -->
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Ketik pesan..." onkeydown="handleEnter(event)">
+                <button onclick="handleChat()">
+                    <i class="fas fa-paper-plane"></i> Kirim
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.IO Script -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Menghubungkan ke server menggunakan Socket.IO
+        const socket = io.connect('http://localhost:3000');
+
+        // Fungsi untuk menambahkan pesan ke log chat
+        function addMessageToChatLog(message, isUser = false) {
+            const chatLog = document.getElementById('chat-log');
+            const messageClass = isUser ? 'user-message' : 'bot-message'; // Menentukan kelas pesan (pengguna atau bot)
+            chatLog.innerHTML += `<p class="${messageClass}">${message}</p>`;
+            chatLog.scrollTop = chatLog.scrollHeight; // Auto-scroll ke bagian bawah chat
+        }
+
+        // Fungsi untuk menangani pengiriman pesan
+        function handleChat() {
+            const userInput = document.getElementById('user-input').value.trim(); // Mengambil input pengguna
+
+            if (userInput) {
+                // Menambahkan pesan pengguna ke log chat
+                addMessageToChatLog(userInput, true);
+
+                // Mengirimkan pesan pengguna ke server melalui Socket.IO
+                socket.emit('userMessage', userInput);
+
+                // Mengosongkan input setelah pengiriman pesan
+                document.getElementById('user-input').value = '';
+            }
+        }
+
+        // Mendengarkan respons bot dari server
+        socket.on('botResponse', (response) => {
+            addMessageToChatLog(response); // Menambahkan respons bot ke log chat
+        });
+
+        // Menangani event ketika tombol "Enter" ditekan untuk mengirim pesan
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                handleChat();
+            }
+        }
+    </script>
+</body>
+</html>

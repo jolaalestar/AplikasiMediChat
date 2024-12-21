@@ -1,0 +1,164 @@
+/* Reset Default Browser Styles */
+* {
+    margin: 0; /* Menghilangkan margin default pada semua elemen */
+    padding: 0; /* Menghilangkan padding default pada semua elemen */
+    box-sizing: border-box; /* Mengatur perhitungan ukuran elemen termasuk padding dan border */
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif; /* Mengatur font utama untuk halaman */
+    background-image: url('https://img.freepik.com/free-vector/watercolor-medical-background_23-2151347369.jpg?t=st=1734672061~exp=1734675661~hmac=5037df69efddbd4c2364ab120dec3aedbffa295d163c5caf4bb874da7309d24c&w=740'); /* Menambahkan gambar latar belakang */
+    background-size: cover; /* Membuat gambar latar belakang memenuhi seluruh area */
+    background-position: center; /* Memusatkan gambar latar belakang */
+    background-repeat: no-repeat; /* Menghindari pengulangan gambar latar belakang */
+    display: flex; /* Menggunakan flexbox untuk tata letak */
+    justify-content: center; /* Menyelaraskan elemen di tengah secara horizontal */
+    align-items: center; /* Menyelaraskan elemen di tengah secara vertikal */
+    min-height: 100vh; /* Mengatur tinggi minimum tubuh halaman sesuai dengan tinggi layar */
+    color: #333; /* Mengatur warna teks default */
+    padding: 0 20px; /* Memberikan padding horizontal agar konten tidak terlalu rapat dengan tepi */
+}
+
+/* Chatbot Container */
+.chatbot-container {
+    width: 100%; /* Lebar 100% dari elemen induk */
+    max-width: 500px; /* Lebar maksimum 500px */
+    background: rgba(255, 255, 255, 0.2); /* Memberikan latar belakang transparan dengan warna putih */
+    backdrop-filter: blur(15px); /* Memberikan efek blur pada latar belakang */
+    border-radius: 20px; /* Menambahkan border-radius untuk sudut yang melengkung */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Menambahkan bayangan untuk elemen chatbot */
+    padding: 30px; /* Memberikan ruang di dalam kontainer */
+    text-align: center; /* Mengatur teks agar berada di tengah */
+    color: #fff; /* Mengatur warna teks menjadi putih */
+    min-height: 400px; /* Mengatur tinggi minimum chatbot */
+}
+
+/* Header Chatbot */
+.chatbot-container h2 {
+    font-size: 2.5em; /* Mengatur ukuran font header */
+    font-weight: 600; /* Mengatur ketebalan font */
+    margin-bottom: 20px; /* Memberikan jarak bawah */
+    color: #fff; /* Mengatur warna teks header menjadi putih */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Memberikan efek bayangan pada teks header */
+}
+
+/* Chat Window */
+.chat-window {
+    background: rgba(0, 0, 0, 0.2); /* Memberikan latar belakang dengan transparansi hitam */
+    border-radius: 15px; /* Menambahkan border-radius pada jendela chat */
+    height: 350px; /* Mengatur tinggi jendela chat */
+    overflow-y: auto; /* Menambahkan scroll vertikal jika konten lebih tinggi dari jendela */
+    padding: 20px; /* Memberikan padding di dalam jendela chat */
+    margin-bottom: 20px; /* Memberikan jarak bawah */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3); /* Menambahkan bayangan di dalam jendela chat */
+}
+
+/* Chat Log */
+.chat-log {
+    display: flex; /* Menggunakan flexbox untuk menata elemen pesan */
+    flex-direction: column; /* Menyusun pesan dalam kolom */
+    gap: 15px; /* Memberikan jarak antar pesan */
+}
+
+/* User Message */
+.user-message {
+    align-self: flex-end; /* Menyusun pesan pengguna ke sebelah kanan */
+    background: #4caf50; /* Memberikan latar belakang hijau pada pesan pengguna */
+    color: #fff; /* Mengatur warna teks pesan menjadi putih */
+    padding: 12px; /* Memberikan padding di sekitar teks pesan */
+    border-radius: 18px 18px 0 18px; /* Menambahkan border-radius pada pesan */
+    max-width: 75%; /* Membatasi lebar pesan maksimum */
+    word-wrap: break-word; /* Membungkus kata agar tidak keluar dari batas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Memberikan bayangan pada pesan pengguna */
+    margin-bottom: 10px; /* Memberikan jarak bawah */
+}
+
+/* Bot Message */
+.bot-message {
+    align-self: flex-start; /* Menyusun pesan bot ke sebelah kiri */
+    background: #2196f3; /* Memberikan latar belakang biru pada pesan bot */
+    color: #fff; /* Mengatur warna teks pesan menjadi putih */
+    padding: 12px; /* Memberikan padding di sekitar teks pesan */
+    border-radius: 18px 18px 18px 0; /* Menambahkan border-radius pada pesan */
+    max-width: 75%; /* Membatasi lebar pesan maksimum */
+    word-wrap: break-word; /* Membungkus kata agar tidak keluar dari batas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Memberikan bayangan pada pesan bot */
+    margin-bottom: 10px; /* Memberikan jarak bawah */
+}
+
+/* Input Area */
+.input-area {
+    display: flex; /* Menggunakan flexbox untuk menyusun elemen input */
+    gap: 15px; /* Memberikan jarak antar elemen */
+    margin-top: 15px; /* Memberikan margin atas */
+    justify-content: space-between; /* Menyusun elemen input secara merata */
+}
+
+/* Input Text */
+input[type="text"] {
+    flex: 1; /* Membuat input mengambil sisa ruang yang tersedia */
+    padding: 14px; /* Memberikan padding di dalam input */
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Memberikan border input dengan transparansi */
+    border-radius: 10px; /* Menambahkan border-radius pada input */
+    background: rgba(255, 255, 255, 0.3); /* Memberikan latar belakang transparan pada input */
+    color: #fff; /* Mengatur warna teks input menjadi putih */
+    font-size: 1.1em; /* Mengatur ukuran font input */
+    outline: none; /* Menghilangkan outline saat input difokuskan */
+    transition: border-color 0.3s ease, background 0.3s ease; /* Menambahkan efek transisi saat input difokuskan */
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Mengatur warna placeholder input */
+}
+
+input[type="text"]:focus {
+    border-color: rgba(255, 255, 255, 0.9); /* Mengubah warna border saat input difokuskan */
+    background: rgba(255, 255, 255, 0.4); /* Mengubah latar belakang input saat difokuskan */
+}
+
+/* Send Button */
+button {
+    padding: 14px 20px; /* Memberikan padding pada tombol */
+    background: #ff9800; /* Memberikan latar belakang oranye pada tombol */
+    color: #fff; /* Mengatur warna teks tombol menjadi putih */
+    border: none; /* Menghilangkan border tombol */
+    border-radius: 10px; /* Menambahkan border-radius pada tombol */
+    cursor: pointer; /* Menampilkan kursor pointer saat tombol di-hover */
+    font-size: 1.1em; /* Mengatur ukuran font tombol */
+    transition: background 0.3s ease, transform 0.2s ease; /* Menambahkan efek transisi saat tombol di-hover */
+}
+
+button:hover {
+    background: #fb8c00; /* Mengubah latar belakang tombol saat di-hover */
+    transform: scale(1.1); /* Membesarkan tombol saat di-hover */
+}
+
+/* Scrollbar Customization */
+.chat-window::-webkit-scrollbar {
+    width: 10px; /* Mengatur lebar scrollbar */
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4); /* Mengubah warna scrollbar */
+    border-radius: 5px; /* Menambahkan border-radius pada scrollbar */
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .chatbot-container {
+        width: 90%; /* Mengatur lebar chatbot menjadi 90% pada layar kecil */
+    }
+
+    .chat-window {
+        height: 300px; /* Mengurangi tinggi jendela chat pada layar kecil */
+    }
+
+    button {
+        font-size: 1em; /* Mengurangi ukuran font tombol pada layar kecil */
+    }
+
+    input[type="text"] {
+        font-size: 1em; /* Mengurangi ukuran font input pada layar kecil */
+    }
+}
